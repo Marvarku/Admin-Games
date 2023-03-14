@@ -1,0 +1,203 @@
+<ng-template #addGame let-modal>
+  <div class="modal-header">
+      <h4 class="modal-title"> <i class="mdi mdi-gamepad-variant"></i> Add New Game </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body">
+     <div class="card">
+         <div class="card-body">
+          <div class="row">
+              <label>Name:</label>
+              <input class="form-control shadow-sm" type="text" placeholder="Enter Game Name">
+          </div>
+          <div class="row mt-3">
+            <label>Category:</label>
+            <input class="form-control shadow-sm" type="text" placeholder="Enter Game Category">
+        </div>
+
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-12"> <button type="button" class="btn btn-info" style="float:right" >Submit</button></div>
+        </div>
+      </div>
+  </div>
+</ng-template>
+
+<ng-template #addUser let-modal>
+  <div class="modal-header">
+      <h4 class="modal-title"> <i class="mdi mdi-human-female"></i> Add New User </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body">
+     <div class="card">
+         <div class="card-body">
+          <div class="row">
+              <label>Name:</label>
+              <input class="form-control shadow-sm" type="text" placeholder="Enter User Name">
+          </div>
+          <div class="row mt-3">
+            <label>Email:</label>
+            <input class="form-control shadow-sm" type="text" placeholder="Enter User Category">
+        </div>
+        <div class="row mt-3">
+          <label>Address:</label>
+          <input class="form-control shadow-sm" type="text" placeholder="Enter User Address">
+      </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-12"> <button type="button" class="btn btn-info" style="float:right" >Submit</button></div>
+        </div>
+      </div>
+  </div>
+</ng-template>
+<ng-container>
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Available Games</h4>
+          <div class="row">
+            <div class="col-6">
+              <form class="m-b-30">
+                <input type='text' class="form-control" placeholder='Search Games By Name...' (keyup)='updateFilter($event)' />
+              </form>
+            </div>
+            <div class="col-6">
+              <button type="button" class="btn btn-info btn-sm" style="float: right;" (click)="open(addGame, 'lg')"> <i class="mdi mdi-plus"></i> Add Game</button>
+            </div>
+          </div>
+          <ngx-datatable #table class='material' [columns]="columns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+            [rowHeight]="'auto'" [limit]="6" [rows]='rows'>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Users Information</h4>
+          <div class="row">
+            <div class="col-6">
+              <form class="m-b-30">
+                <input type='text' class="form-control" placeholder='Search Users By Name...' />
+              </form>
+            </div>
+            <div class="col-6">
+              <button type="button" class="btn btn-info btn-sm" style="float: right;"  (click)="open(addUser, 'lg')"> <i class="mdi mdi-human-greeting"></i> Add User</button>
+            </div>
+          </div>
+            <div class="table-responsive mt-4">
+                <table class="table no-wrap v-middle">
+                    <thead>
+                        <tr class="border-0">
+                          <th class="border-0">#</th>
+                            <th class="border-0">Name & Email</th>
+                            <th class="border-0">Address</th>
+                            <th class="border-0">Status</th>
+                            <th class="border-0 text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                          <td>1</td>
+                            <td>
+                                <div class="d-flex no-block align-items-center">
+                                    <div class="m-r-10">
+                                        <img src="assets/images/users/d1.jpg" alt="user" class="rounded-circle" width="45" />
+                                    </div>
+                                    <div class="">
+                                        <h5 class="m-b-0 font-16 font-medium">Hanna Gover</h5>
+                                        <span>hgover@gmail.com</span>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td>3 Military Forest</td>
+                            <td>
+                                <i class="fa fa-circle text-orange" data-toggle="tooltip" data-placement="top" title="Inactive"></i>
+                            </td>
+                            <td class="text-center">
+                              <button class="btn btn-circle btn-outline-info btn-sm"> <i class="mdi mdi-pencil"></i> </button>
+                              <button class="btn btn-circle btn-outline-danger btn-sm ml-2"> <i class="mdi mdi-delete-forever"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                            <td>
+                                <div class="d-flex no-block align-items-center">
+                                    <div class="m-r-10">
+                                        <img src="assets/images/users/d2.jpg" alt="user" class="rounded-circle" width="45" />
+                                    </div>
+                                    <div class="">
+                                        <h5 class="m-b-0 font-16 font-medium">Daniel Kristeen</h5>
+                                        <span>Kristeen@gmail.com</span>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td>35</td>
+                            <td>
+                                <i class="fa fa-circle text-success" data-toggle="tooltip" data-placement="top" title="Active"></i>
+                            </td>
+                            <td class="text-center">
+                              <button class="btn btn-circle btn-outline-info btn-sm"> <i class="mdi mdi-pencil"></i> </button>
+                              <button class="btn btn-circle btn-outline-danger btn-sm ml-2"> <i class="mdi mdi-delete-forever"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                            <td>
+                                <div class="d-flex no-block align-items-center">
+                                    <div class="m-r-10">
+                                        <img src="assets/images/users/d3.jpg" alt="user" class="rounded-circle" width="45" />
+                                    </div>
+                                    <div class="">
+                                        <h5 class="m-b-0 font-16 font-medium">Julian Josephs</h5>
+                                        <span>Josephs@gmail.com</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>90 Terrace Close</td>
+                            <td>
+                                <i class="fa fa-circle text-success" data-toggle="tooltip" data-placement="top" title="Active"></i>
+                            </td>
+                            <td class="text-center">
+                              <button class="btn btn-circle btn-outline-info btn-sm"> <i class="mdi mdi-pencil"></i> </button>
+                              <button class="btn btn-circle btn-outline-danger btn-sm ml-2"> <i class="mdi mdi-delete-forever"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                          <td>4</td>
+                            <td>
+                                <div class="d-flex no-block align-items-center">
+                                    <div class="m-r-10">
+                                        <img src="assets/images/users/2.jpg" alt="user" class="rounded-circle" width="45" />
+                                    </div>
+                                    <div class="">
+                                        <h5 class="m-b-0 font-16 font-medium">Jan Petrovic</h5>
+                                        <span>hgover@gmail.com</span>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td>Dunlope 15 Avenue</td>
+                            <td>
+                                <i class="fa fa-circle text-orange" data-toggle="tooltip" data-placement="top" title="In Progress"></i>
+                            </td>
+                            <td class="text-center">
+                              <button class="btn btn-circle btn-outline-info btn-sm"> <i class="mdi mdi-pencil"></i> </button>
+                              <button class="btn btn-circle btn-outline-danger btn-sm ml-2"> <i class="mdi mdi-delete-forever"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+  </div>
+</ng-container>

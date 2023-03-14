@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "vertical-sidebar.component.scss"
+    ],
+    "names": [],
+    "file": "vertical-sidebar.component.css"
+}

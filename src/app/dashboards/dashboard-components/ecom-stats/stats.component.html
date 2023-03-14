@@ -1,0 +1,64 @@
+<div class="row">
+    <!-- Column -->
+    <div class="col-sm-12 col-lg-4">
+        <div class="card">
+            <div class="card-body pb-0">
+                <h4 class="card-title">Earnings</h4>
+                <h5 class="card-subtitle">Total Earnings of the Month</h5>
+                <h2 class="font-medium">$432,567.53</h2>
+            </div>
+            <div class="m-t-5 d-flex flex-column" style="height: 65px;">
+                <apx-chart [series]="earningboxChartOptions.series" [chart]="earningboxChartOptions.chart"
+                    [xaxis]="earningboxChartOptions.xaxis" [yaxis]="earningboxChartOptions.yaxis"
+                    [grid]="earningboxChartOptions.grid" [stroke]="earningboxChartOptions.stroke"
+                    [tooltip]="earningboxChartOptions.tooltip" [dataLabels]="earningboxChartOptions.dataLabels"
+                    [legend]="earningboxChartOptions.legend" [colors]="earningboxChartOptions.colors"
+                    [markers]="earningboxChartOptions.markers">
+                </apx-chart>
+            </div>
+        </div>
+    </div>
+      <div class="col-sm-12 col-lg-4">
+        <div class="card bg-cyan text-white  card-hover">
+            <div class="card-body">
+                <h4 class="card-title">Streams</h4>
+                <h3 class="white-text m-b-0">
+                    <i class="ti-arrow-up"></i> 6548</h3>
+            </div>
+            <div class="d-flex flex-column" style="height: 85px;">
+                <apx-chart [series]="PageviewChartOptions.series" [chart]="PageviewChartOptions.chart"
+                    [stroke]="PageviewChartOptions.stroke" [tooltip]="PageviewChartOptions.tooltip"
+                    [colors]="PageviewChartOptions.colors" [fill]="PageviewChartOptions.fill">
+                </apx-chart>
+            </div>
+        </div>
+    </div>
+
+  <div class="col-sm-12 col-lg-4">
+    <div class="card">
+      <div class="card-body">
+          <h4 class="card-title">Downloads</h4>
+          <div class="row mt-3">
+              <div class="col-6 m-t-40">
+                  <h2 class="m-b-5">90,316</h2>
+                  <span>(150-165 sales)</span>
+              </div>
+              <div class="col-6">
+                  <div class="ml-auto">
+                      <apx-chart [series]="SalesperformanceChartOptions.series"
+                          [chart]="SalesperformanceChartOptions.chart"
+                          [dataLabels]="SalesperformanceChartOptions.dataLabels"
+                          [legend]="SalesperformanceChartOptions.legends"
+                          [colors]="SalesperformanceChartOptions.colors"
+                          [stroke]="SalesperformanceChartOptions.stroke"
+                          [labels]="SalesperformanceChartOptions.labels"
+                          [tooltip]="SalesperformanceChartOptions.tooltip"
+                          [plotOptions]="SalesperformanceChartOptions.plotOptions"></apx-chart>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+</div>
