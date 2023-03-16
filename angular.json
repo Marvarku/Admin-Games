@@ -30,7 +30,7 @@
               "rxjs-compat"
               
             ],
-            "outputPath": "dist/yolo-group",
+            "outputPath": "dist/xtreme-admin-angular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -96,10 +96,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "yolo-group:build:production"
+              "browserTarget": "xtreme-admin-angular:build:production"
             },
             "development": {
-              "browserTarget": "yolo-group:build:development"
+              "browserTarget": "xtreme-admin-angular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -107,7 +107,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "yolo-group:build"
+            "browserTarget": "xtreme-admin-angular:build"
           }
         },
         "test": {
@@ -131,5 +131,5 @@
       }
     }
   },
-  "defaultProject": "yolo-group"
+  "defaultProject": "xtreme-admin-angular"
 }

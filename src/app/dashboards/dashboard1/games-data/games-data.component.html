@@ -36,20 +36,25 @@
      <div class="card">
          <div class="card-body">
           <div class="row">
-              <label>Name:</label>
-              <input class="form-control shadow-sm" type="text" placeholder="Enter User Name">
+            <label>User ID: <sup><i class="mdi mdi-asterisk text-danger"></i></sup></label>
+            <input class="form-control shadow-sm" type="text" [(ngModel)]="userId" placeholder="Enter Registration ID">
+        </div>
+
+          <div class="row">
+              <label>Name: <sup><i class="mdi mdi-asterisk text-danger"></i></sup></label>
+              <input class="form-control shadow-sm" type="text" [(ngModel)]="userName" placeholder="Enter User Name">
           </div>
           <div class="row mt-3">
-            <label>Email:</label>
-            <input class="form-control shadow-sm" type="text" placeholder="Enter User Category">
+            <label>Email: <sup><i class="mdi mdi-asterisk text-danger"></i></sup></label>
+            <input class="form-control shadow-sm" type="text" [(ngModel)]="userEmail" placeholder="Enter User Email">
         </div>
         <div class="row mt-3">
-          <label>Address:</label>
-          <input class="form-control shadow-sm" type="text" placeholder="Enter User Address">
+          <label>Address: <sup><i class="mdi mdi-asterisk text-danger"></i></sup></label>
+          <input class="form-control shadow-sm" type="text" [(ngModel)]="userAddress" placeholder="Enter User Address">
       </div>
         </div>
         <div class="row mt-3">
-          <div class="col-md-12"> <button type="button" class="btn btn-info" style="float:right" >Submit</button></div>
+          <div class="col-md-12"> <button type="button" class="btn btn-info" style="float:right" (click)="createUser()">Submit</button></div>
         </div>
       </div>
   </div>
@@ -87,14 +92,14 @@
               </form>
             </div>
             <div class="col-6">
-              <button type="button" class="btn btn-info btn-sm" style="float: right;"  (click)="open(addUser, 'lg')"> <i class="mdi mdi-human-greeting"></i> Add User</button>
+              <button type="submit" class="btn btn-info btn-sm" style="float: right;"  (click)="open(addUser, 'lg')"> <i class="mdi mdi-human-greeting"></i> Add User</button>
             </div>
           </div>
             <div class="table-responsive mt-5">
                 <table class="table no-wrap v-middle">
                     <thead>
                         <tr class="border-0">
-                          <th class="border-0">#</th>
+                          <th class="border-0">User ID</th>
                             <th class="border-0">Name & Email</th>
                             <th class="border-0">Address</th>
                             <th class="border-0">Status</th>
@@ -102,97 +107,31 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                          <td>1</td>
+                        <tr *ngFor="let user of users">
+                          <td>{{user?.id || '--'}}</td>
                             <td>
                                 <div class="d-flex no-block align-items-center">
                                     <div class="m-r-10">
                                         <img src="assets/images/users/d1.jpg" alt="user" class="rounded-circle" width="45" />
                                     </div>
                                     <div class="">
-                                        <h5 class="m-b-0 font-16 font-medium">Hanna Gover</h5>
-                                        <span>hgover@gmail.com</span>
+                                        <h5 class="m-b-0 font-16 font-medium">{{user?.name || '--'}}</h5>
+                                        <span>{{user?.email || '--'}}</span>
                                     </div>
                                 </div>
                             </td>
 
-                            <td>3 Military Forest</td>
+                            <td>{{user?.address}}</td>
                             <td>
-                                <i class="fa fa-circle text-orange" data-toggle="tooltip" data-placement="top" title="Inactive"></i>
+                                <i class="fa fa-circle text-{{user?.status === 'Inactive' ? 'orange' : 'success'}}" 
+                                data-toggle="tooltip" data-placement="top" title="Inactive"></i>
                             </td>
                             <td class="text-center">
                               <button class="btn btn-circle btn-outline-info btn-sm"> <i class="mdi mdi-pencil"></i> </button>
-                              <button class="btn btn-circle btn-outline-danger btn-sm ml-2"> <i class="mdi mdi-delete-forever"></i></button>
+                              <button class="btn btn-circle btn-outline-danger btn-sm ml-2" (click)="deleteUser(user)"> <i class="mdi mdi-delete-forever"></i></button>
                             </td>
                         </tr>
-                        <tr>
-                          <td>2</td>
-                            <td>
-                                <div class="d-flex no-block align-items-center">
-                                    <div class="m-r-10">
-                                        <img src="assets/images/users/d2.jpg" alt="user" class="rounded-circle" width="45" />
-                                    </div>
-                                    <div class="">
-                                        <h5 class="m-b-0 font-16 font-medium">Daniel Kristeen</h5>
-                                        <span>Kristeen@gmail.com</span>
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td>35</td>
-                            <td>
-                                <i class="fa fa-circle text-success" data-toggle="tooltip" data-placement="top" title="Active"></i>
-                            </td>
-                            <td class="text-center">
-                              <button class="btn btn-circle btn-outline-info btn-sm"> <i class="mdi mdi-pencil"></i> </button>
-                              <button class="btn btn-circle btn-outline-danger btn-sm ml-2"> <i class="mdi mdi-delete-forever"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                            <td>
-                                <div class="d-flex no-block align-items-center">
-                                    <div class="m-r-10">
-                                        <img src="assets/images/users/d3.jpg" alt="user" class="rounded-circle" width="45" />
-                                    </div>
-                                    <div class="">
-                                        <h5 class="m-b-0 font-16 font-medium">Julian Josephs</h5>
-                                        <span>Josephs@gmail.com</span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>90 Terrace Close</td>
-                            <td>
-                                <i class="fa fa-circle text-success" data-toggle="tooltip" data-placement="top" title="Active"></i>
-                            </td>
-                            <td class="text-center">
-                              <button class="btn btn-circle btn-outline-info btn-sm"> <i class="mdi mdi-pencil"></i> </button>
-                              <button class="btn btn-circle btn-outline-danger btn-sm ml-2"> <i class="mdi mdi-delete-forever"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                          <td>4</td>
-                            <td>
-                                <div class="d-flex no-block align-items-center">
-                                    <div class="m-r-10">
-                                        <img src="assets/images/users/2.jpg" alt="user" class="rounded-circle" width="45" />
-                                    </div>
-                                    <div class="">
-                                        <h5 class="m-b-0 font-16 font-medium">Jan Petrovic</h5>
-                                        <span>hgover@gmail.com</span>
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td>Dunlope 15 Avenue</td>
-                            <td>
-                                <i class="fa fa-circle text-orange" data-toggle="tooltip" data-placement="top" title="In Progress"></i>
-                            </td>
-                            <td class="text-center">
-                              <button class="btn btn-circle btn-outline-info btn-sm"> <i class="mdi mdi-pencil"></i> </button>
-                              <button class="btn btn-circle btn-outline-danger btn-sm ml-2"> <i class="mdi mdi-delete-forever"></i></button>
-                            </td>
-                        </tr>
+                      
                     </tbody>
                 </table>
             </div>
